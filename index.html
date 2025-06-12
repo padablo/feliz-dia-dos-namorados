@@ -1,0 +1,177 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Para Você 💚</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+            body {
+                background: url('gif_1.gif') no-repeat center center;
+                background-size: cover;           /* Faz a imagem cobrir toda a tela */
+                background-attachment: fixed;     /* Fixa o fundo na tela */
+                background-repeat: no-repeat;     /* Garante que a imagem não repita */
+                background-position: center center; /* Centraliza perfeitamente */
+                font-family: 'Roboto', Arial, sans-serif;
+                text-align: center;
+                padding: 30px 20px;
+                color: #b2dfdb;
+                line-height: 1.6;
+            }
+
+            h1, h2 {
+                font-family: 'Great Vibes', cursive;
+                color: #ffffff;
+                text-shadow: 1px 1px 3px #f8cdda;
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 5em;
+                margin-top: 0;
+            }
+
+            h2 {
+                font-size: 3em;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .linha {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin: 30px 0;
+                flex-wrap: wrap;
+            }
+
+            .linha img {
+                width: 45%;
+                max-width: 350px;
+                border-radius: 20px;
+                box-shadow: 0 8px 15px rgba(181, 46, 111, 0.35);
+                transition: transform 0.4s ease, box-shadow 0.4s ease;
+                cursor: pointer;
+                filter: drop-shadow(0 0 5px #b52e6f66);
+            }
+
+            .linha img:hover {
+                transform: scale(1.07) rotate(1deg);
+                box-shadow: 0 12px 20px rgba(181, 46, 111, 0.6);
+                filter: drop-shadow(0 0 8px #b52e6f99);
+            }
+
+            p {
+                font-size: 1.3em;
+                max-width: 700px;
+                margin: 25px auto;
+                color: #6a3b57;
+                font-style: italic;
+                text-shadow: 0 0 3px #f8cdda;
+            }
+
+            video#meuVideo {
+                border-radius: 20px;
+                box-shadow: 0 12px 25px rgba(181, 46, 111, 0.5);
+                margin: 40px 0;
+                max-width: 90%;
+            }
+
+            @media (max-width: 600px) {
+                .linha img {
+                    width: 90%;
+                    max-width: none;
+                }
+                h1 {
+                    font-size: 2.4em;
+                }
+                h2 {
+                    font-size: 1.2em;
+                }
+            }
+
+            .fade-in-up {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 3s ease, transform 3s ease;
+            }
+
+            .fade-in-up.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- Música de fundo -->
+        <audio id="bgMusic" autoplay loop muted>
+            <source src="musica_1.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+
+        <h1 class="fade-in-up">Feliz dia dos namorados💚</h1>
+        <h2 class="fade-in-up">Alguns momentos que quero guardar para sempre com você!</h2>
+
+        <div class="linha fade-in-up">
+            <img src="foto_1.jpg" alt="foto_1" />
+            <img src="foto_2.jpg" alt="foto_2" />
+        </div>
+
+        <h2 class="fade-in-up">Eu não sei exatamente em que momento tudo mudou. Talvez tenha sido no seu sorriso, 
+         ou no jeito que seus olhos brilham quando fala do que ama. Mas desde que você chegou, 
+         minha vida ganhou novas cores, novas músicas, novos sentidos.</h2>
+
+        <div class="linha fade-in-up">
+            <img src="foto_3.jpg" alt="foto_3" />
+            <img src="foto_4.jpg" alt="foto_4" />
+        </div>
+
+        <h2 class="fade-in-up">Com você, os dias são mais leves, e até o silêncio parece confortável. Você me inspira a ser melhor, me ensina o valor dos detalhes, e me mostra o que é amar de verdade. Eu te escolheria mil vezes, em mil vidas diferentes.</h2>
+
+        <div class="linha fade-in-up">
+            <img src="foto_5.jpg" alt="foto_5" />
+            <img src="foto_6.jpg" alt="foto_6" />
+        </div>
+
+        <h2 class="fade-in-up">Com você, os dias são mais leves, e até o silêncio parece confortável. Você me inspira a ser melhor, me ensina o valor dos detalhes, e me mostra o que é amar de verdade. Eu te escolheria mil vezes, em mil vidas diferentes.</h2>
+
+        <div class="linha fade-in-up">
+            <img src="foto_7.jpg" alt="foto_7" />
+            <img src="foto_8.jpg" alt="foto_8" />
+        </div>
+
+        <h2 class="fade-in-up">Eu sempre vou te amar</h2>
+
+        <video id="meuVideo" autoplay loop muted controls class="fade-in-up">
+            <source src="video_1.mp4" type="video/mp4" />
+            Seu navegador não suporta vídeos.
+        </video>
+
+        <script>
+            const music = document.getElementById('bgMusic');
+
+            document.body.addEventListener('click', () => {
+                music.muted = false;
+                music.play();
+            }, { once: true });
+
+            function fadeInOnScroll() {
+                const elements = document.querySelectorAll('.fade-in-up');
+                const windowBottom = window.innerHeight + window.scrollY;
+
+                elements.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top + window.scrollY;
+                    if (windowBottom > elementTop + 50) {
+                        el.classList.add('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', fadeInOnScroll);
+            window.addEventListener('load', fadeInOnScroll);
+        </script>
+
+        <h1 class="fade-in-up">Te amo demais! 💚</h1>
+    </body>
+    </html>
